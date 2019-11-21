@@ -15,9 +15,13 @@ import com.tencent.tinker.loader.shareutil.ShareConstants;
         flags = ShareConstants.TINKER_ENABLE_ALL,
         loadVerifyFlag = true)
 public class MTinkerApplicationLike extends DefaultApplicationLike {
+
+    public static Context context;
+
     public MTinkerApplicationLike(Application application, int tinkerFlags, boolean tinkerLoadVerifyFlag, long applicationStartElapsedTime,
                                   long applicationStartMillisTime, Intent tinkerResultIntent) {
         super(application, tinkerFlags, tinkerLoadVerifyFlag, applicationStartElapsedTime, applicationStartMillisTime, tinkerResultIntent);
+        context = application.getApplicationContext();
     }
 
     @Override

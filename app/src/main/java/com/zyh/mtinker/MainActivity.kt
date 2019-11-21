@@ -2,9 +2,11 @@ package com.zyh.mtinker
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,16 +23,11 @@ class MainActivity : AppCompatActivity() {
         requestPermission()
     }
 
-    fun onClick(view: View) {
-        val path = Environment.getExternalStorageDirectory().path + File.separator+ "patch_signed_7zip.apk"
-        val file = File(path)
-        if (file.exists()){
-            Toast.makeText(this, "补丁已经存在", Toast.LENGTH_SHORT).show()
-            TinkerInstaller.onReceiveUpgradePatch(this,path)
-        }else{
-            Toast.makeText(this, "补丁不存在", Toast.LENGTH_SHORT).show()
-        }
-
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        showLog("HOME键")
+        //退到后台加载patch包
+        startService(Intent(this,MyIntentService::class.java))
     }
 
     @SuppressLint("CheckResult")
