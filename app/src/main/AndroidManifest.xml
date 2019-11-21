@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <service
-            android:name=".MyIntentService"
-            android:exported="false"></service>
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -26,6 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".TinkerResultService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
+
     </application>
 
 </manifest>

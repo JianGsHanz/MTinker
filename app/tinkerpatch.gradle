@@ -10,11 +10,11 @@ ext {
     tinkerEnabled = true //是否打开tinker的功能
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/app-release-1121-10-09-34.apk"
+    tinkerOldApkPath = "${bakPath}/app-release-1121-16-18-20.apk"
     //proguard mapping file to build patch apk
-    tinkerApplyMappingPath = "${bakPath}/app-release-1121-10-09-34-mapping.txt"
+    tinkerApplyMappingPath = "${bakPath}/app-release-1121-16-18-20-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/app-release-1121-10-09-34-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-debug-1121-16-18-20-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
 //    tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"

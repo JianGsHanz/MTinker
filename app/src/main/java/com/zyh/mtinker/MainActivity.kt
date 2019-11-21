@@ -21,13 +21,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         requestPermission()
+
+        val path = Environment.getExternalStorageDirectory().path + File.separator+ "patch_signed_7zip.apk"
+        val file = File(path)
+        if (file.exists()){
+            showLog("补丁已经存在")
+            TinkerInstaller.onReceiveUpgradePatch(this,path)
+        }else{
+            showLog("补丁不存在")
+        }
     }
 
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
         showLog("HOME键")
-        //退到后台加载patch包
-        startService(Intent(this,MyIntentService::class.java))
     }
 
     @SuppressLint("CheckResult")
@@ -49,5 +56,15 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Utils.isBackground = false
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Utils.isBackground = true
     }
 }

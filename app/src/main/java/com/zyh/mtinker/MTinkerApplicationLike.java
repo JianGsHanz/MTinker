@@ -27,7 +27,13 @@ public class MTinkerApplicationLike extends DefaultApplicationLike {
     @Override
     public void onBaseContextAttached(Context base) {
         super.onBaseContextAttached(base);
-        TinkerInstaller.install(this);
+//        TinkerInstaller.install(this);
+
+//        TinkerManager.initFastCrashProtect();
+        //should set before tinker is installed
+//        TinkerManager.setUpgradeRetryEnable(true);
+
+        TinkerManager.INSTANCE.installTinker(this);
     }
 
     @Override
